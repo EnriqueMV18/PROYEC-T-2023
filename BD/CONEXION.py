@@ -20,5 +20,7 @@ class DAO ():
             try:
                 cursor = self.conexion.cursor()
                 cursor.execute("SELECT * FROM producto ORDER BY nombre ASC")
-            except Error as ex
+                resultados = cursor.fetchall()
+                return resultados
+            except Error as ex:
                 print("Error al conectar a la base de datos: {0}".format(ex))
