@@ -24,3 +24,15 @@ class DAO ():
                 return resultados
             except Error as ex:
                 print("Error al conectar a la base de datos: {0}".format(ex))
+    
+    def registrarProducto(self, producto):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sql = "INSERT INTO producto (Producto, Precio) VALUES (%s, %s)"
+                cursor.execute(sql, (producto[0], producto[1]))
+                self.conexion.commit()
+                print("!Producto Agregado¡")
+            except mysql.connector.Error as ex:
+                print("Error al conectar a la base de datos: {0}".format(ex))
+

@@ -44,7 +44,11 @@ def ejecutarOpcion(opcion):
         except:
             print("Ocurrio un error...")
     elif opcion == 2:
-        print("Registro")
+        producto = FUNCIONES.pedirDatosRegistro()
+        try:
+            dao.registrarProducto(producto)
+        except:
+            print("Ocurrio un error...")
     elif opcion == 3:
         print("Actualizacion")
     elif opcion == 4:
