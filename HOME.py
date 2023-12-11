@@ -27,6 +27,7 @@ def menuPrincipal():
             elif opcion == 6:  
                 continuar = False
                 print("¡Gracias por usar este sistema!")
+                break
             else:
                 opcionCorrecta = True
                 ejecutarOpcion(opcion)
