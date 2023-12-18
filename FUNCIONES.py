@@ -33,3 +33,20 @@ def pedirDatosRegistro():
 
     producto = (Producto, Precio)
     return producto
+
+def pedirDatosEliminacion(producto):
+    for pro in producto:
+        print(pro[1])  # Muestra el nombre del producto al usuario
+
+    existeProducto = False
+    productoEliminar = input("Ingrese el producto a eliminar: ")
+    
+    for pro in producto:
+        if pro[1] == productoEliminar:
+            existeProducto = True
+            break
+
+    if not existeProducto:
+        productoEliminar = ""
+        
+    return productoEliminar
