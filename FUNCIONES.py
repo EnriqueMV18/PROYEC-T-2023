@@ -35,6 +35,17 @@ def pedirDatosRegistro():
     return producto
 
 def pedirDatosEliminacion(producto):
+
+    mensaje = "Eliminar"
+    longitud_mensaje = len(mensaje)
+    ancho_marco = 15
+    espacios_total = ancho_marco - longitud_mensaje
+    espacios_izquierda = espacios_total // 2
+    espacios_derecha = espacios_total - espacios_izquierda
+    print("╔" + "═" * ancho_marco + "╗")
+    print("║" + " " * espacios_izquierda + mensaje + " " * espacios_derecha + "║")
+    print("╚" + "═" * ancho_marco + "╝")
+
     for pro in producto:
         print(pro[1])  # Muestra el nombre del producto al usuario
 
@@ -52,10 +63,25 @@ def pedirDatosEliminacion(producto):
     return productoEliminar
 
 def mostrarResultados(resultados):
+
+    mensaje = "Busqueda"
+    longitud_mensaje = len(mensaje)
+    ancho_marco = 15
+    espacios_total = ancho_marco - longitud_mensaje
+    espacios_izquierda = espacios_total // 2
+    espacios_derecha = espacios_total - espacios_izquierda
+    print("╔" + "═" * ancho_marco + "╗")
+    print("║" + " " * espacios_izquierda + mensaje + " " * espacios_derecha + "║")
+    print("╚" + "═" * ancho_marco + "╝")
+
     if resultados:
         print("Resultados de la búsqueda:")
-        for resultado in resultados:
-            print(resultado)  # Puedes imprimir toda la información del producto o lo que necesites
+        contador = 1
+        for rel in resultados:
+            datos = "{0} | Producto: {2: <25} | (Precio ${3})"
+            print(datos.format(contador, rel[0], rel[1], rel[2]))
+            contador = contador + 1
+        print(" ")  # Puedes imprimir toda la información del producto o lo que necesites
     else:
         print("No se encontraron productos con ese nombre.")
 

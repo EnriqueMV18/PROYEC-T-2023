@@ -60,7 +60,7 @@ def ejecutarOpcion(opcion):
                 if not(productoEliminar == ""):
                     dao.eliminarProducto(productoEliminar)
                 else:
-                    print("Producto no encontrado... /n")
+                    print("Producto no encontrado...")
             else:
                 print("No se encontraron productos...")
         except:

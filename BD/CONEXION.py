@@ -46,14 +46,13 @@ class DAO ():
                 print("!Producto Eliminado¡")
             except mysql.connector.Error as ex:
                 print("Error al conectar a la base de datos: {0}".format(ex))
-                
+
     def buscarProducto(self, nombre_producto):
-        try:
-            if self.conexion.is_connected():
+            try:
                 cursor = self.conexion.cursor()
                 sql = "SELECT * FROM producto WHERE Producto LIKE %s"
                 cursor.execute(sql, ('%' + nombre_producto + '%',))
                 resultados = cursor.fetchall()
                 return resultados
-        except Error as ex:
-            raise ex
+            except Error as ex:
+                print("Error al conectar a la base de datos: {0}".format(ex))
