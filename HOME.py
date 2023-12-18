@@ -66,9 +66,15 @@ def ejecutarOpcion(opcion):
         except:
             print("Ocurrio un error...")
     elif opcion == 5:
-        print("Busqueda")
-    
-    else:
-        print("Opcion invalida...")
+        try:
+            nombre_a_buscar = input("Ingrese el nombre del producto a buscar: ")
+            resultados_busqueda = dao.buscarProducto(nombre_a_buscar)
+            if resultados_busqueda:
+                productoBuscar = FUNCIONES.mostrarResultados(resultados_busqueda)
+            else:
+                print("No se encontraron productos con ese nombre.")
+        except Exception as busqueda_error:
+            print("Ocurrió un error al buscar producto:", busqueda_error)
+
 
 menuPrincipal()

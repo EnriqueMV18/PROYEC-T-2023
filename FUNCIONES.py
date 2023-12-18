@@ -50,3 +50,14 @@ def pedirDatosEliminacion(producto):
         productoEliminar = ""
         
     return productoEliminar
+
+def mostrarResultados(resultados):
+    if resultados:
+        print("Resultados de la búsqueda:")
+        for resultado in resultados:
+            print(resultado)  # Puedes imprimir toda la información del producto o lo que necesites
+    else:
+        print("No se encontraron productos con ese nombre.")
+
+
+    
