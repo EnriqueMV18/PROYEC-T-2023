@@ -1,5 +1,9 @@
+import os
 from BD.CONEXION import DAO
 import FUNCIONES
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def menuPrincipal():
     continuar = True
@@ -34,6 +38,7 @@ def menuPrincipal():
 
 def ejecutarOpcion(opcion):
     dao = DAO()
+    clear_screen() 
 
     if opcion == 1:
         try:
