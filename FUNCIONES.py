@@ -11,10 +11,11 @@ def listarProducto(producto):
 
     contador = 1
     for pro in producto:
-        datos = "{0} | Producto: {2: <25} | (Precio ${3})"
-        print(datos.format(contador, pro[0], pro[1], pro[2]))
+        datos = "{0} | Producto: {2: <25} | (Precio ${3:.2f})"  # Modifica esta línea
+        print(datos.format(contador, pro[0], pro[1], pro[2]))  # Modifica esta línea
         contador = contador + 1
     print(" ")
+
 
 def pedirDatosRegistro():
     mensaje = "Agregar"
@@ -27,12 +28,21 @@ def pedirDatosRegistro():
     print("║" + " " * espacios_izquierda + mensaje + " " * espacios_derecha + "║")
     print("╚" + "═" * ancho_marco + "╝")
 
-    #Id = input("Ingrese el ID": )
+    # Ingresar el nombre del producto
     Producto = input("Ingrese el Producto: ")
-    Precio = float(input("Ingrese el Precio: "))
 
-    producto = (Producto, Precio)
+    # Ingresar el Precio como cadena
+    Precio_str = input("Ingrese el Precio: ")
+
+    # Convertir la cadena de Precio a DECIMAL
+    Precio_decimal = Decimal(Precio_str)  # Necesitas importar Decimal: from decimal import Decimal
+
+    producto = (Producto, Precio_decimal)  # Mantener el precio como Decimal
     return producto
+
+
+
+from decimal import Decimal  # Importa la clase Decimal
 
 def pedirDatosActualizacion(producto):
     mensaje = "Actualizar"
@@ -44,6 +54,7 @@ def pedirDatosActualizacion(producto):
     print("╔" + "═" * ancho_marco + "╗")
     print("║" + " " * espacios_izquierda + mensaje + " " * espacios_derecha + "║")
     print("╚" + "═" * ancho_marco + "╝")
+    
     for pro in producto:
         print(pro[1])  # Muestra el nombre del producto al usuario
 
@@ -52,11 +63,17 @@ def pedirDatosActualizacion(producto):
     for pro in producto:
         if pro[1] == productoActualizarNombre:
             nuevoNombre = input("Ingrese el nuevo nombre para {}: ".format(pro[1]))
-            nuevoPrecio = float(input("Ingrese el nuevo precio para {}: ".format(pro[1])))
-            productoActualizar = (nuevoNombre, nuevoPrecio, pro[1])  # (NuevoNombre, NuevoPrecio, ProductoAntiguo)
+            nuevoPrecio_str = input("Ingrese el nuevo precio para {}: ".format(pro[1]))
+
+            # Convertir la cadena de Precio a DECIMAL
+            nuevoPrecio_decimal = Decimal(nuevoPrecio_str)
+
+            productoActualizar = (nuevoNombre, nuevoPrecio_decimal, pro[1])  # (NuevoNombre, NuevoPrecio, ProductoAntiguo)
             return productoActualizar
 
     return ""
+
+
     
 
 def pedirDatosEliminacion(producto):
