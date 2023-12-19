@@ -34,7 +34,34 @@ def pedirDatosRegistro():
     producto = (Producto, Precio)
     return producto
 
+def pedirDatosActualizacion(producto):
+    mensaje = "Actualizar"
+    longitud_mensaje = len(mensaje)
+    ancho_marco = 15
+    espacios_total = ancho_marco - longitud_mensaje
+    espacios_izquierda = espacios_total // 2
+    espacios_derecha = espacios_total - espacios_izquierda
+    print("╔" + "═" * ancho_marco + "╗")
+    print("║" + " " * espacios_izquierda + mensaje + " " * espacios_derecha + "║")
+    print("╚" + "═" * ancho_marco + "╝")
+    for pro in producto:
+        print(pro[1])  # Muestra el nombre del producto al usuario
+
+    productoActualizarNombre = input("Ingrese el nombre del producto a actualizar: ")
+
+    for pro in producto:
+        if pro[1] == productoActualizarNombre:
+            nuevoNombre = input("Ingrese el nuevo nombre para {}: ".format(pro[1]))
+            nuevoPrecio = float(input("Ingrese el nuevo precio para {}: ".format(pro[1])))
+            productoActualizar = (nuevoNombre, nuevoPrecio, pro[1])  # (NuevoNombre, NuevoPrecio, ProductoAntiguo)
+            return productoActualizar
+
+    return ""
+    
+
 def pedirDatosEliminacion(producto):
+
+    listarProducto(producto)
 
     mensaje = "Eliminar"
     longitud_mensaje = len(mensaje)

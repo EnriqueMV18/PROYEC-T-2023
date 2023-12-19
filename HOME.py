@@ -51,7 +51,19 @@ def ejecutarOpcion(opcion):
         except:
             print("Ocurrio un error...")
     elif opcion == 3:
-        print("Actualizacion")
+        try:
+            producto = dao.listarProducto()
+            if len(producto) > 0:
+                productoActualizar = FUNCIONES.pedirDatosActualizacion(producto)
+                if not productoActualizar == "":
+                    dao.actualizarProducto(productoActualizar)
+                else:
+                    print("Producto no encontrado...")
+            else:
+                print("No se encontraron productos...")
+        except:
+            print("Ocurrió un error al actualizar el producto: ")
+    
     elif opcion == 4:
         try:
             producto = dao.listarProducto()
@@ -60,7 +72,7 @@ def ejecutarOpcion(opcion):
                 if not(productoEliminar == ""):
                     dao.eliminarProducto(productoEliminar)
                 else:
-                    print("Producto no encontrado...")
+                    print("Producto no encontrado... \n")
             else:
                 print("No se encontraron productos...")
         except:

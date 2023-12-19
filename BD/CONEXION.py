@@ -36,6 +36,17 @@ class DAO ():
             except mysql.connector.Error as ex:
                 print("Error al conectar a la base de datos: {0}".format(ex))
 
+    def actualizarProducto(self, productoActualizar):
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sql = "UPDATE producto SET Producto = %s, Precio = %s WHERE Producto = %s"
+                cursor.execute(sql, (productoActualizar[0], productoActualizar[1], productoActualizar[2]))
+                self.conexion.commit()
+                print("¡Producto Actualizado!")
+            except mysql.connector.Error as ex:
+                print("Error al actualizar el producto:", ex)
+
     def eliminarProducto(self, productoEliminar):
         if self.conexion.is_connected():
             try:
